@@ -43,6 +43,12 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
+#define XF86MonBrightnessDown       0x1008ff03
+#define XF86MonBrightnessUp         0x1008ff02
+#define XF86AudioMute               0x1008ff12
+#define XF86AudioLowerVolume        0x1008ff11
+#define XF86AudioRaiseVolume        0x1008ff13
+
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -55,10 +61,18 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", prim_bg, "-nf", prim_hl, "-sb", secd_bg, "-sf", prim_tx, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *dmenucmd[]   = { "dmenu_run", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", prim_bg, "-nf", prim_hl, "-sb", secd_bg, "-sf", prim_tx, NULL };
+static const char *termcmd[]    = { "st", NULL };
+static const char *lockcmd[]    = { "slock", NULL };
+static const char *brightup[]   = { "brightnessctl", "s", "5%+", NULL };
+static const char *brightdown[] = { "brightnessctl", "s", "5%-", NULL };
 
 static Key keys[] = {
+	/* modifier                     key                        function        argument */
+    { 0,                            XF86MonBrightnessDown,     spawn,         {.v = brightdown } },
+    { 0,                            XF86MonBrightnessUp,       spawn,         {.v = brightup   } },
+    { MODKEY,                       XK_o,                      spawn,         {.v = lockcmd    } },
+
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
