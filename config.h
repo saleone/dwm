@@ -66,11 +66,17 @@ static const char *termcmd[]    = { "st", NULL };
 static const char *lockcmd[]    = { "slock", NULL };
 static const char *brightup[]   = { "brightnessctl", "s", "5%+", NULL };
 static const char *brightdown[] = { "brightnessctl", "s", "5%-", NULL };
+static const char *audiomute[] =  { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
+static const char *audioup[] =    { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
+static const char *audiodown[] =  { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
 
 static Key keys[] = {
 	/* modifier                     key                        function        argument */
     { 0,                            XF86MonBrightnessDown,     spawn,         {.v = brightdown } },
     { 0,                            XF86MonBrightnessUp,       spawn,         {.v = brightup   } },
+    { 0,                            XF86AudioMute,             spawn,         {.v = audiomute  } },
+    { 0,                            XF86AudioLowerVolume,      spawn,         {.v = audiodown  } },
+    { 0,                            XF86AudioRaiseVolume,      spawn,         {.v = audioup    } },
     { MODKEY,                       XK_o,                      spawn,         {.v = lockcmd    } },
 
 	/* modifier                     key        function        argument */
@@ -83,8 +89,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_Right,  incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_Left,   incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.025} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.025} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
@@ -99,8 +103,12 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY,                       XK_Left,  focusmon,        {.i = -1 } },
+	{ MODKEY,                       XK_Right, focusmon,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Left,  tagmon,          {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_Right, tagmon,          {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
