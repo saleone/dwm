@@ -19,7 +19,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "jen", "dva", "tri", "cet", "pet"};
+static const char *tags[] = { " jen", " dva", " tri", " cet", " pet", " ses"};
 
 static const Rule rules[] = {
 /* xprop(1):
@@ -114,6 +114,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
+	TAGKEYS(                        XK_6,                      5)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
