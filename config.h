@@ -6,8 +6,8 @@ static const unsigned int snap      = 10;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const unsigned int gappx     = 10;
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "mono:size=11:antialias=true:autohint=true" };
+static const char dmenufont[]       = "mono:size=11:antialias=true:autohint=true";
 static const char prim_bg[]         = "#000000";
 static const char prim_hl[]         = "#bbbbbb";
 static const char secd_bg[]         = "#444444";
@@ -31,7 +31,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
