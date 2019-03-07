@@ -1,17 +1,17 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int snap      = 10;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const unsigned int gappx     = 10;
+static const unsigned int gappx     = 12;
 static const char *fonts[]          = { "mono:size=11:antialias=true:autohint=true" };
 static const char dmenufont[]       = "mono:size=11:antialias=true:autohint=true";
-static const char prim_bg[]         = "#000000";
-static const char prim_hl[]         = "#bbbbbb";
-static const char secd_bg[]         = "#444444";
-static const char prim_tx[]         = "#ffffff";
+static const char prim_bg[]         = "#ffffff";
+static const char prim_hl[]         = "#1faaaa";
+static const char secd_bg[]         = "#e0e0e0";
+static const char prim_tx[]         = "#151515";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { prim_tx,   prim_bg,   secd_bg },
@@ -19,7 +19,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { " jen", " dva", " tri", " cet", " pet", " ses"};
+static const char *tags[] = { " jen", " dva", " tri", " cet", " pet", " null"};
 
 static const Rule rules[] = {
 /* xprop(1):
@@ -114,7 +114,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
+	TAGKEYS(                        XK_0,                      5)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
