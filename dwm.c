@@ -52,8 +52,8 @@
 #define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
 #define LENGTH(X)               (sizeof X / sizeof X[0])
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
-#define WIDTH(X)                ((X)->w + 2 * (X)->bw + gappx * 2)
-#define HEIGHT(X)               ((X)->h + 2 * (X)->bw + gappx * 1)
+#define WIDTH(X)                ((X)->w + 2 * (X)->bw + gappx)
+#define HEIGHT(X)               ((X)->h + 2 * (X)->bw + gappx)
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 
@@ -170,6 +170,7 @@ static long getstate(Window w);
 static void grabbuttons(Client *c, int focused);
 static void grabkeys(void);
 static void incnmaster(const Arg *arg);
+static void incngaps(const Arg *arg);
 static void keypress(XEvent *e);
 static void killclient(const Arg *arg);
 static void manage(Window w, XWindowAttributes *wa);
@@ -255,6 +256,7 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
+static unsigned int gappx = 1;
 
 /* configuration, allows nested code to access above variables */
 #include "config.h"
@@ -377,6 +379,7 @@ arrange(Monitor *m)
 		showhide(m->stack);
 	else for (m = mons; m; m = m->next)
 		showhide(m->stack);
+
 	if (m) {
 		arrangemon(m);
 		restack(m);
@@ -859,6 +862,15 @@ void
 incnmaster(const Arg *arg)
 {
 	selmon->nmaster = selmon->pertag->nmasters[selmon->pertag->curtag] = MAX(selmon->nmaster + arg->i, 0);
+	arrange(selmon);
+}
+
+void
+incngaps(const Arg *arg)
+{
+	if (gappx < 2 && arg->i < 0)
+		return;
+	gappx += arg->i;
 	arrange(selmon);
 }
 
