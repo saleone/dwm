@@ -31,9 +31,11 @@ static const Layout layouts[] = {
 	{ "-",      monocle },
 };
 
-static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
-static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
-static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+static const char *upvol[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
+static const char *downvol[]    = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
+static const char *mutevol[]    = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+static const char *upbright[]   = { "brightness",     "inc",                             NULL };
+static const char *downbright[] = { "brightness",     "dec",                             NULL };
 
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
@@ -47,6 +49,8 @@ static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "togg
 #define XK_voldec XF86XK_AudioLowerVolume
 #define XK_volinc XF86XK_AudioRaiseVolume
 #define XK_volmut XF86XK_AudioMute
+#define XK_briinc XF86XK_MonBrightnessUp
+#define XK_bridec XF86XK_MonBrightnessDown
 
 static char dmenumon[2] = "0";
 static const char *dmenucmd[] = {
@@ -100,6 +104,9 @@ static Key keys[] = {
 	{ 0,                            XK_voldec,    spawn,          {.v = downvol } },
 	{ 0,                            XK_volmut,    spawn,          {.v = mutevol } },
 	{ 0,                            XK_volinc,    spawn,          {.v = upvol   } },
+
+	{ 0,                            XK_bridec,    spawn,          {.v = downbright } },
+	{ 0,                            XK_briinc,    spawn,          {.v = upbright   } },
 
 	TAGKEYS(                        XK_1,                         0)
 	TAGKEYS(                        XK_2,                         1)
