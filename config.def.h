@@ -31,11 +31,11 @@ static const Layout layouts[] = {
 	{ "-",      monocle },
 };
 
-static const char *upvol[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
-static const char *downvol[]    = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
-static const char *mutevol[]    = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
-static const char *upbright[]   = { "brightness",     "inc",                             NULL };
-static const char *downbright[] = { "brightness",     "dec",                             NULL };
+static const char *upvol[]      = { "/usr/bin/pactl", "set-sink-volume", "0",   "+5%",     NULL };
+static const char *downvol[]    = { "/usr/bin/pactl", "set-sink-volume", "0",   "-5%",     NULL };
+static const char *mutevol[]    = { "/usr/bin/pactl", "set-sink-mute",   "0",   "toggle",  NULL };
+static const char *upbright[]   = { "brightnessctl",  "set",             "+5%",            NULL };
+static const char *downbright[] = { "brightnessctl",  "set",             "5%-",            NULL };
 
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
