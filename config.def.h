@@ -1,12 +1,12 @@
 #include <X11/XF86keysym.h>
 
-static const char col_fg[]          = "#5f5448";
-static const char col_bg[]          = "#fffffa";
+static const char col_fg[]          = "#555555";
+static const char col_bg[]          = "#fafafa";
 static const char col_hl[]          = "#f24c27";
 static const unsigned int borderpx  = 3;
 static const unsigned int snap      = 32;
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "monospace:size=12" };
+static const char dmenufont[]       = "monospace:size=12";
 static const char *colors[][3]      = {
 	/*                fg         bg         border   */
 	[SchemeNorm]  = { col_fg,    col_bg,    col_bg },
@@ -36,6 +36,14 @@ static const char *downvol[]    = { "/usr/bin/pactl", "set-sink-volume", "0",   
 static const char *mutevol[]    = { "/usr/bin/pactl", "set-sink-mute",   "0",   "toggle",  NULL };
 static const char *upbright[]   = { "brightnessctl",  "set",             "+5%",            NULL };
 static const char *downbright[] = { "brightnessctl",  "set",             "5%-",            NULL };
+
+static const char *statuscmd[] = {
+	"/bin/sh",
+	"-c",
+	"/home/saleone/.local/bin/controls notify status",
+	NULL
+};
+
 
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
@@ -69,12 +77,15 @@ static const char *dmenucmd[] = {
 	col_fg,
 	NULL
 };
+
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key           function        argument */
 	{ MODKEY,                       XK_space,     spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,    spawn,          {.v = termcmd } },
+
+	{ MODKEY,                       XK_s,         spawn,          {.v = statuscmd } },
 
 	{ MODKEY,                       XK_j,         focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,         focusstack,     {.i = -1 } },
