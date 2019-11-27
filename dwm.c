@@ -255,7 +255,7 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
-static unsigned int gappx = 1;
+static unsigned int gappx = 0;
 
 /* configuration, allows nested code to access above variables */
 #include "config.h"
@@ -865,7 +865,7 @@ incnmaster(const Arg *arg)
 void
 incngaps(const Arg *arg)
 {
-	if (gappx < 2 && arg->i < 0)
+	if (gappx == 0 && arg->i < 0)
 		return;
 	gappx += arg->i;
 	arrange(selmon);
