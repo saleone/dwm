@@ -5,6 +5,8 @@ static const char col_bg[]          = "#fafafa";
 static const char col_hl[]          = "#f24c27";
 static const unsigned int borderpx  = 3;
 static const unsigned int snap      = 32;
+static const int showbar            = 0;
+static const int topbar             = 1;
 static const char *fonts[]          = { "monospace:size=12" };
 static const char dmenufont[]       = "monospace:size=12";
 static const char *colors[][3]      = {
