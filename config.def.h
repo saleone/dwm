@@ -2,35 +2,36 @@
 
 static const char col_fg[]          = "#555555";
 static const char col_bg[]          = "#fafafa";
-static const char col_hl[]          = "#f24c27";
+static const char col_hl[]          = "#a54242";
 static const unsigned int borderpx  = 3;
 static const unsigned int snap      = 32;
-static const int showbar            = 0;
-static const int topbar             = 1;
+static const int showbar            = 1;
+static const int topbar             = 0;
+static const int barpadding         = 10;
 static const char *fonts[]          = { "monospace:size=12" };
 static const char dmenufont[]       = "monospace:size=12";
 static const char *colors[][3]      = {
 	/*                fg         bg         border   */
 	[SchemeNorm]  = { col_fg,    col_bg,    col_bg },
-	[SchemeSel]   = { col_bg,    col_fg,    col_hl },
+	[SchemeSel]   = { col_bg,    col_hl,    col_hl },
 };
 
-static const char *tags[] = { "1", "2", "3", "4", "5", "0"};
+static const char *tags[] = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 0 "};
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ NULL,       NULL,       NULL,       0,            False,       -1 }
 };
 
-static const float mfact     = 0.55;
+static const float mfact     = 0.50;
 static const int nmaster     = 1;
 static const int resizehints = 1;
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "=",      tile },
-	{ "~",      NULL },
-	{ "-",      monocle },
+	{ " = ",      tile },
+	{ " ~ ",      NULL },
+	{ " - ",      monocle },
 };
 
 static const char *upvol[]      = { "/usr/bin/pactl", "set-sink-volume", "0",   "+5%",     NULL };
@@ -76,7 +77,7 @@ static const char *dmenucmd[] = {
 	"-sb",
 	col_hl,
 	"-sf",
-	col_fg,
+	col_bg,
 	NULL
 };
 
@@ -120,6 +121,8 @@ static Key keys[] = {
 
 	{ 0,                            XK_bridec,    spawn,          {.v = downbright } },
 	{ 0,                            XK_briinc,    spawn,          {.v = upbright   } },
+
+	{ MODKEY|ShiftMask,             XK_b,         togglebar,      {0} },
 
 	TAGKEYS(                        XK_1,                         0)
 	TAGKEYS(                        XK_2,                         1)
