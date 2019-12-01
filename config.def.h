@@ -8,8 +8,8 @@ static const unsigned int snap      = 32;
 static const int showbar            = 1;
 static const int topbar             = 0;
 static const int barpadding         = 10;
-static const char *fonts[]          = { "monospace:size=12" };
-static const char dmenufont[]       = "monospace:size=12";
+static const char *fonts[]          = { "Ubuntu Mono:size=14" };
+static const char dmenufont[]       = "Ubuntu Mono:size=14";
 static const char *colors[][3]      = {
 	/*                fg         bg         border   */
 	[SchemeNorm]  = { col_fg,    col_bg,    col_bg },
@@ -64,20 +64,10 @@ static const char *statuscmd[] = {
 #define XK_bridec XF86XK_MonBrightnessDown
 
 static char dmenumon[2] = "0";
-static const char *dmenucmd[] = {
+static const char *menucmd[] = {
 	"dmenu_run",
 	"-m",
 	dmenumon,
-	"-fn",
-	dmenufont,
-	"-nb",
-	col_bg,
-	"-nf",
-	col_fg,
-	"-sb",
-	col_hl,
-	"-sf",
-	col_bg,
 	NULL
 };
 static const char *lockcmd[] = { "slock", NULL };
@@ -86,8 +76,8 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key           function        argument */
-	{ MODKEY,                       XK_space,     spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_p,         spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_space,     spawn,          {.v = menucmd } },
+	{ MODKEY,                       XK_p,         spawn,          {.v = menucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,    spawn,          {.v = termcmd } },
 
 	{ MODKEY,                       XK_s,         spawn,          {.v = statuscmd } },
