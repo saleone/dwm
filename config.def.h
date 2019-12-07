@@ -1,8 +1,8 @@
 #include <X11/XF86keysym.h>
 
-static const char col_fg[]          = "#555555";
-static const char col_bg[]          = "#fafafa";
-static const char col_hl[]          = "#a54242";
+static const char col_fg[]          = "#fafafa";
+static const char col_bg[]          = "#222222";
+static const char col_hl[]          = "#ff0732";
 static const unsigned int borderpx  = 3;
 static const unsigned int snap      = 32;
 static const int showbar            = 1;
